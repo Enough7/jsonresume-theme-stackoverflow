@@ -137,7 +137,7 @@ table {
 
 body,
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 13px;
   color: #40484f;
   font-weight: 400;
@@ -489,17 +489,17 @@ section .location {
 #languages .item,
 #skills .item,
 #interests .item {
-  width: 15em;
+  width: 14em;
   padding: 0 0.5em 0.5em 0;
   border-bottom: none;
 }
 
 #skills .item {
-  width: 16em;
+  width: 15em;
 }
 
 #skills .item .keywords {
-  width: 15em;
+  width: 14em;
 }
 
 /* Skill chart */
