@@ -195,6 +195,7 @@ strong {
 /* every section wrapper */
 
 .section {
+  break-inside: avoid;
   margin-bottom: 1rem;
 }
 
@@ -495,7 +496,7 @@ section .location {
 }
 
 #skills .item {
-  width: 15em;
+  width: 14em;
 }
 
 #skills .item .keywords {
