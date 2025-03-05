@@ -53,13 +53,6 @@
         {{/if}}
       </span>
       {{/location}}
-      {{#if keywords.length}}
-      <ul class="keywords">
-        {{#each keywords}}
-        <li>{{.}}</li>
-        {{/each}}
-      </ul>
-      {{/if}}
       <div class="item">
         {{#if summary}}
         <div class="summary">{{paragraphSplit summary}}</div>
@@ -72,6 +65,13 @@
         </ul>
         {{/if}}
       </div>
+      {{#if keywords.length}}
+        <ul class="keywords">
+          {{#each keywords}}
+            <li>{{.}}</li>
+          {{/each}}
+        </ul>
+      {{/if}}
     </section>
     {{/each}}
   </section>

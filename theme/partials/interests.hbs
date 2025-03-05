@@ -11,18 +11,18 @@
         {{name}}
       </h3>
       {{/if}}
-      {{#if keywords.length}}
-      <ul class="keywords">
-        {{#each keywords}}
-        <li>{{.}}</li>
-        {{/each}}
-      </ul>
-      {{/if}}
       {{#if summary}}
         <div class="summary">{{paragraphSplit summary}}</div>
       {{/if}}
     </div>
     {{/each}}
+    {{#if keywords.length}}
+      <ul class="keywords">
+        {{#each keywords}}
+          <li>{{.}}</li>
+        {{/each}}
+      </ul>
+    {{/if}}
   </section>
 </section>
 {{/if}}

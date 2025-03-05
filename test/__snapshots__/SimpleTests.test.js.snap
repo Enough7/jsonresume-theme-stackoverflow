@@ -148,7 +148,7 @@ table {
 
 body,
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 13px;
   color: #40484f;
   font-weight: 400;
@@ -206,6 +206,7 @@ strong {
 /* every section wrapper */
 
 .section {
+  break-inside: avoid;
   margin-bottom: 1rem;
 }
 
@@ -357,13 +358,6 @@ section .location {
   font-weight: 600;
 }
 
-.company::before,
-.institution::before,
-.organization::before,
-.awarder::before {
-  content: "at ";
-}
-
 .company,
 .institution,
 .organization,
@@ -382,7 +376,7 @@ section .location {
 
 .keywords,
 .courses {
-  margin: 0.5em 0;
+  margin: 0.25em 0;
 }
 
 .keywords li,
@@ -507,17 +501,17 @@ section .location {
 #languages .item,
 #skills .item,
 #interests .item {
-  width: 15em;
+  width: 14em;
   padding: 0 0.5em 0.5em 0;
   border-bottom: none;
 }
 
 #skills .item {
-  width: 16em;
+  width: 14em;
 }
 
 #skills .item .keywords {
-  width: 15em;
+  width: 14em;
 }
 
 /* Skill chart */
@@ -652,150 +646,42 @@ section .location {
 }
 
 @media print {
-  #profiles a:not(.hide-href-print)::after{
-    content: " (" attr(href) ") ";
-  }
-  #profiles .url .show-only-url-print {
-    display: none;
-  }
-  #profiles .url a::after {
-    content: attr(href);
+  li {
+    margin-left: 1.5em;
   }
   #resume {
-    margin: 0.1em;
-    padding: 0.1em;
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
-    line-height: 1.25;
+    width: 820px;
+    margin: 2rem auto;
   }
-  @page {
-    margin: 1cm 1.4cm;
+  .section > section > header .space-left {
+    opacity: 1;
+    cursor: pointer;
   }
-  .item-count {
-    display: none;
-  }
-  .company a {
-    color: #40484f;
+  .section > section:not(.main-summary) {
+    margin-left: 1.5rem;
   }
   .company::before,
   .institution::before,
   .organization::before,
   .awarder::before {
-    content: "at ";
+    content: "| ";
   }
-  .main-summary {
-    padding: 0;
-    background: transparent;
+  .header-left {
+    float: left;
+    width: 70%;
+    word-break: normal;
   }
-  .section {
-    margin: 0.8rem 0;
-    padding: 0;
+  .section header .date {
+    padding: 0.2em;
   }
-  .section header {
-    padding-bottom: 0.15rem;
-  }
-  .section .location {
-    padding-bottom: 0.15rem;
-  }
-  .section > section > section {
-    border-bottom: 1px solid #fdfdfd;
-    margin: .5em 0;
-  }
-  .section > section > section:last-of-type {
-    margin: 0;
-  }
-  .stack-overflow::after {
-    content: "";
-  }
-  .fa.social {
-    color: #828386;
-  }
-  ul {
-    margin-top: 0.4em;
-  }
-  ul,
-  li {
-    padding: 0;
-  }
-  ul.keywords li,
-  ul.courses li {
-    margin: 0;
-    padding: 0;
-    font-size: 0.8rem;
-    background: transparent;
-  }
-  ul.keywords li::after,
-  ul.courses li::after {
-    padding: 0 0 0 0.1rem;
-    content: ", ";
-  }
-  ul.keywords::before,
-  ul.courses::before {
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  #skills .item {
-    display: flex;
-    flex-direction: column;
-    margin: 0.3rem 0;
-    padding: 0;
-  }
-  #skills .level {
-    margin: 0.1rem 0;
-    font-weight: 400;
-  }
-  #skills .keywords {
-    font-size: 0.9rem;
-    margin: 0;
-  }
-  .highlights {
-    margin: 0.5em 0 0 0;
-  }
-  .highlights > li > p {
-    margin-bottom: 0.3em;
-  }
-  ul.keywords::before {
-    content: "Skills: ";
-    font-size: 1rem;
-  }
-  #skills .keywords::before {
-    content: none;
-  }
-  .section p {
-    margin: 0;
-    padding: 0;
-  }
-  ul.courses::before {
-    content: "Major courses: ";
-    font-size: 1rem;
-  }
-  ul.keywords li,
-  ul.courses li {
-    font-size: 1rem;
-    line-height: inherit;
-  }
-  ul.keywords li:last-of-type::after,
-  ul.courses li:last-of-type::after {
-    content: "";
-  }
-  .level em {
-    font-style: normal;
-    padding: 0.1em 0;
-  }
-  .level .bar {
+  .display {
     display: none;
   }
-  #profiles .item {
-    padding: 0;
-  }
-  .item.display {
+  .display:not(.none) {
     display: block;
-    opacity: 1 !important;
-  }
-  .fa-location-dot:before {
-    padding-left: 0.1em;
   }
 }
+
 
     </style>
   </head>
@@ -914,7 +800,8 @@ section .location {
             <span class="url">
               <span class="fa-solid fa-up-right-from-square"></span>
               <a target="_blank" href="http://piedpiper.example.com">http://piedpiper.example.com</a>
-            </span>        <div class="item" id="work-item">
+            </span> 
+            <div class="item" id="work-item">
               <div class="summary"><p><p>Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.</p></p></div>
               <ul class="highlights">
                 <li><p><p>Build an algorithm for artist to detect if their music was violating copy right infringement laws</p></p></li>
@@ -942,11 +829,6 @@ section .location {
               <span class="fa-solid fa-up-right-from-square"></span>
               <a target="_blank" href="http://missdirection.example.com">http://missdirection.example.com</a>
             </span>
-            <ul class="keywords">
-                <li>GoogleMaps</li>
-                <li>Chrome Extension</li>
-                <li>Javascript</li>
-            </ul>
             <div class="item">
               <ul class="highlights">
                   <li><p><p>Won award at AIHacks 2016</p></p></li>
@@ -954,6 +836,11 @@ section .location {
                   <li><p><p>Using modern technologies such as GoogleMaps, Chrome Extension and Javascript</p></p></li>
               </ul>
             </div>
+              <ul class="keywords">
+                  <li>GoogleMaps</li>
+                  <li>Chrome Extension</li>
+                  <li>Javascript</li>
+              </ul>
           </section>
         </section>
       </section>
@@ -1074,9 +961,7 @@ section .location {
                   in Hooli
                 </span>
               </div>
-             
             </header>
-      
             <div class="item">
               <div class="summary"><p><p>Innovative middle-out compression algorithm that changes the way we store data.</p></p></div>
             </div>
@@ -1110,10 +995,6 @@ section .location {
             <h3 class="name">
               Wildlife
             </h3>
-            <ul class="keywords">
-              <li>Ferrets</li>
-              <li>Unicorns</li>
-            </ul>
           </div>
         </section>
       </section>
@@ -1286,7 +1167,7 @@ table {
 
 body,
 html {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 13px;
   color: #40484f;
   font-weight: 400;
@@ -1344,6 +1225,7 @@ strong {
 /* every section wrapper */
 
 .section {
+  break-inside: avoid;
   margin-bottom: 1rem;
 }
 
@@ -1495,13 +1377,6 @@ section .location {
   font-weight: 600;
 }
 
-.company::before,
-.institution::before,
-.organization::before,
-.awarder::before {
-  content: "at ";
-}
-
 .company,
 .institution,
 .organization,
@@ -1520,7 +1395,7 @@ section .location {
 
 .keywords,
 .courses {
-  margin: 0.5em 0;
+  margin: 0.25em 0;
 }
 
 .keywords li,
@@ -1645,17 +1520,17 @@ section .location {
 #languages .item,
 #skills .item,
 #interests .item {
-  width: 15em;
+  width: 14em;
   padding: 0 0.5em 0.5em 0;
   border-bottom: none;
 }
 
 #skills .item {
-  width: 16em;
+  width: 14em;
 }
 
 #skills .item .keywords {
-  width: 15em;
+  width: 14em;
 }
 
 /* Skill chart */
@@ -1790,150 +1665,42 @@ section .location {
 }
 
 @media print {
-  #profiles a:not(.hide-href-print)::after{
-    content: " (" attr(href) ") ";
-  }
-  #profiles .url .show-only-url-print {
-    display: none;
-  }
-  #profiles .url a::after {
-    content: attr(href);
+  li {
+    margin-left: 1.5em;
   }
   #resume {
-    margin: 0.1em;
-    padding: 0.1em;
-    -ms-word-wrap: break-word;
-    word-wrap: break-word;
-    line-height: 1.25;
+    width: 820px;
+    margin: 2rem auto;
   }
-  @page {
-    margin: 1cm 1.4cm;
+  .section > section > header .space-left {
+    opacity: 1;
+    cursor: pointer;
   }
-  .item-count {
-    display: none;
-  }
-  .company a {
-    color: #40484f;
+  .section > section:not(.main-summary) {
+    margin-left: 1.5rem;
   }
   .company::before,
   .institution::before,
   .organization::before,
   .awarder::before {
-    content: "at ";
+    content: "| ";
   }
-  .main-summary {
-    padding: 0;
-    background: transparent;
+  .header-left {
+    float: left;
+    width: 70%;
+    word-break: normal;
   }
-  .section {
-    margin: 0.8rem 0;
-    padding: 0;
+  .section header .date {
+    padding: 0.2em;
   }
-  .section header {
-    padding-bottom: 0.15rem;
-  }
-  .section .location {
-    padding-bottom: 0.15rem;
-  }
-  .section > section > section {
-    border-bottom: 1px solid #fdfdfd;
-    margin: .5em 0;
-  }
-  .section > section > section:last-of-type {
-    margin: 0;
-  }
-  .stack-overflow::after {
-    content: "";
-  }
-  .fa.social {
-    color: #828386;
-  }
-  ul {
-    margin-top: 0.4em;
-  }
-  ul,
-  li {
-    padding: 0;
-  }
-  ul.keywords li,
-  ul.courses li {
-    margin: 0;
-    padding: 0;
-    font-size: 0.8rem;
-    background: transparent;
-  }
-  ul.keywords li::after,
-  ul.courses li::after {
-    padding: 0 0 0 0.1rem;
-    content: ", ";
-  }
-  ul.keywords::before,
-  ul.courses::before {
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  #skills .item {
-    display: flex;
-    flex-direction: column;
-    margin: 0.3rem 0;
-    padding: 0;
-  }
-  #skills .level {
-    margin: 0.1rem 0;
-    font-weight: 400;
-  }
-  #skills .keywords {
-    font-size: 0.9rem;
-    margin: 0;
-  }
-  .highlights {
-    margin: 0.5em 0 0 0;
-  }
-  .highlights > li > p {
-    margin-bottom: 0.3em;
-  }
-  ul.keywords::before {
-    content: "Skills: ";
-    font-size: 1rem;
-  }
-  #skills .keywords::before {
-    content: none;
-  }
-  .section p {
-    margin: 0;
-    padding: 0;
-  }
-  ul.courses::before {
-    content: "Major courses: ";
-    font-size: 1rem;
-  }
-  ul.keywords li,
-  ul.courses li {
-    font-size: 1rem;
-    line-height: inherit;
-  }
-  ul.keywords li:last-of-type::after,
-  ul.courses li:last-of-type::after {
-    content: "";
-  }
-  .level em {
-    font-style: normal;
-    padding: 0.1em 0;
-  }
-  .level .bar {
+  .display {
     display: none;
   }
-  #profiles .item {
-    padding: 0;
-  }
-  .item.display {
+  .display:not(.none) {
     display: block;
-    opacity: 1 !important;
-  }
-  .fa-location-dot:before {
-    padding-left: 0.1em;
   }
 }
+
 
     </style>
   </head>
@@ -2052,7 +1819,8 @@ section .location {
             <span class="url">
               <span class="fa-solid fa-up-right-from-square"></span>
               <a target="_blank" href="http://piedpiper.example.com">http://piedpiper.example.com</a>
-            </span>        <div class="item" id="work-item">
+            </span> 
+            <div class="item" id="work-item">
               <div class="summary"><p><p>Pied Piper is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.</p></p></div>
               <ul class="highlights">
                 <li><p><p>Build an algorithm for artist to detect if their music was violating copy right infringement laws</p></p></li>
@@ -2080,11 +1848,6 @@ section .location {
               <span class="fa-solid fa-up-right-from-square"></span>
               <a target="_blank" href="http://missdirection.example.com">http://missdirection.example.com</a>
             </span>
-            <ul class="keywords">
-                <li>GoogleMaps</li>
-                <li>Chrome Extension</li>
-                <li>Javascript</li>
-            </ul>
             <div class="item">
               <ul class="highlights">
                   <li><p><p>Won award at AIHacks 2016</p></p></li>
@@ -2092,6 +1855,11 @@ section .location {
                   <li><p><p>Using modern technologies such as GoogleMaps, Chrome Extension and Javascript</p></p></li>
               </ul>
             </div>
+              <ul class="keywords">
+                  <li>GoogleMaps</li>
+                  <li>Chrome Extension</li>
+                  <li>Javascript</li>
+              </ul>
           </section>
         </section>
       </section>
@@ -2212,9 +1980,7 @@ section .location {
                   in Hooli
                 </span>
               </div>
-             
             </header>
-      
             <div class="item">
               <div class="summary"><p><p>Innovative middle-out compression algorithm that changes the way we store data.</p></p></div>
             </div>
@@ -2248,10 +2014,6 @@ section .location {
             <h3 class="name">
               Wildlife
             </h3>
-            <ul class="keywords">
-              <li>Ferrets</li>
-              <li>Unicorns</li>
-            </ul>
           </div>
         </section>
       </section>

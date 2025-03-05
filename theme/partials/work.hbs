@@ -33,13 +33,7 @@
       <span class="url">
         <span class="fa-solid fa-up-right-from-square"></span>
         <a target="_blank" href="{{url}}">{{url}}</a>
-      </span> {{/if}} {{#if keywords.length}}
-      <ul class="keywords">
-        {{#each keywords}}
-        <li>{{.}}</li>
-        {{/each}}
-      </ul>
-      {{/if}}
+      </span> {{/if}}
       <div class="item" id="work-item">
         {{#if summary}}
         <div class="summary">{{paragraphSplit summary}}</div>
@@ -50,6 +44,13 @@
           <li>{{paragraphSplit .}}</li>
           {{/each}}
         </ul>
+        {{/if}}
+        {{#if keywords.length}}
+          <ul class="keywords">
+            {{#each keywords}}
+              <li>{{.}}</li>
+            {{/each}}
+          </ul>
         {{/if}}
       </div>
     </section>
